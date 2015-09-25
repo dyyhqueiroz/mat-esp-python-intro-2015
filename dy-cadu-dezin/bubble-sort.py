@@ -8,7 +8,8 @@ cincomenos = [0, 1, 2, 3, 4]      # estao sendo descritos os cinco menores valor
 print("lista original: ",cartas) # serve para mostrar a ordem original das cartas quando o programa rodar"
 
 N = 20                            #N e o numero total de cartas"
-count_troca = 0
+count_troca = 0                   # Essa ferramenta serve para dizer que a contagem de troca começa pelo zero 
+count_it = 0                      # Estamos definindo que as iterações iniciam a partir do zero
 
 plt.figure() # aqui uma figura em branco é criada
 plt.plot(range(N),cartas,'ok') #aqui preenchemos-na com os dados crus
@@ -21,6 +22,20 @@ plt.close #fecha a figura
 
 for i in range(0 , N - 1, 1):     #i= representa a primeira carta a ser considerada"
     for j in range(i + 1, N , 1): #j= e a carta posterior a carta[i]"
+        
+
+        plt.figure() # aqui uma figura em branco é criada
+        plt.plot(range(N),cartas,'ok') #aqui preenchemos-na com os dados crus
+        plt.plot(i, cartas[i], 'or')
+        plt.plot(j, cartas[j], 'ob')
+        count_it = count_it+1 #ai no contador eu adiciono um numero a mais pra ser o numero do meu grafico
+        plt.title(u"Iteração-{}".format(count_it)) #para dar nome ao meu gráfico
+        plt.xlabel(u"Posição") #nomeamos o eixo X
+        plt.ylabel("Valor") #nomeamos o eixo Y
+        plt.savefig("fig/bubble-it-{}.png".format(count_it)) #comando para salvar a figura na pasta fig
+        plt.close #fecha a figura
+        
+
         if cartas[i] > cartas[j]: #Assim se a carta[i] for maior que [j] inverte-se a ordem delas"
             temp = cartas[i]      #O temp serve como um opcao auxiliar onde a carta[i] e guardada para que haja uma permutacao com a carta [j]"
             cartas[i] = cartas[j] #Armazenando-se a carta[i] no temp e possivel colocar a carta[j] em seu lugar" 
